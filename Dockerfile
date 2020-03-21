@@ -2,9 +2,9 @@
 FROM debian:9.8
 LABEL maintainer="mdoulaty@gmail.com"
 
-RUN useradd -u 1000 jpuri
+#RUN useradd -u 1000 jpuri
 # Change to non-root privilege
-USER jpuri
+#USER jpuri
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
