@@ -2,10 +2,6 @@
 FROM debian:9.8
 LABEL maintainer="mdoulaty@gmail.com"
 
-#RUN useradd -u 1000 jpuri
-# Change to non-root privilege
-#USER jpuri
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         g++ \
@@ -40,5 +36,9 @@ RUN git clone --depth 1 https://github.com/kaldi-asr/kaldi.git /opt/kaldi && \
     ./configure --shared && \
     make depend -j $(nproc) && \
     make -j $(nproc)
+
+RUN useradd -u 1000 jpuri
+# Change to non-root privilege
+USER jpuri
 
 WORKDIR /opt/kaldi/
